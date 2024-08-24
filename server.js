@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const productRoutes = require('./routes/productRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 app.use(cors());
 
 app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/cart', cartRoutes);
 
 mongoose
     .connect(process.env.MONGO_URI, { dbName: process.env.DB_NAME })
