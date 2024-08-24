@@ -17,7 +17,7 @@ const createOrder = async (req, res) => {
             if (!product) return res.status(404).json({ message: `Product with ID ${cartProduct.productID} not found` });
 
             if (product.stock < cartProduct.quantity) {
-                return res.status(400).json({ message: `Insufficient stock for product: ${product.name}` });
+                return res.status(400).json({ message: `Insufficient stock for product: ${product.name}. Current stock is ${product.stock}` });
             }
 
             totalPrice += product.price * cartProduct.quantity;
